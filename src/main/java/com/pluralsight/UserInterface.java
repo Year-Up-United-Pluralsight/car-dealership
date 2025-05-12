@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -33,7 +34,7 @@ public class UserInterface {
         // Displays menu, takes user input, & calls corresponding process() method; exits if user chooses exit or enters nothing
         do {
 
-            // 1) Display the menu
+            // Displays the menu
             System.out.println("""
             ~ Welcome to Din's Car Dealership! Select an option:
                Would you like to search for vehicles by...
@@ -46,7 +47,7 @@ public class UserInterface {
                 (7) Exit
             """);
 
-            // Records user choice
+            // Read's user choice
             userChoice = scanner.nextLine();
 
             // Switch statement that calls the correct process() method that matches the user request
@@ -68,17 +69,6 @@ public class UserInterface {
             }
 
         } while (userChoice != "7" && !userChoice.isBlank());
-
-        // 2) read the user's command
-        // 3) code a switch statement that calls the correct process() method that matches the user request
-
-
-
-
-
-
-
-
     }
 
     public void processGetByPriceRequest(){};
@@ -86,8 +76,19 @@ public class UserInterface {
     public void processGetByYearRequest(){};
     public void processGetByMileageRequest(){};
     public void processGetByVehicleTypeRequest(){};
-    public void processGetAllVehiclesRequest(){};
+    public void processGetAllVehiclesRequest(){
+        // Gets list of all vehicles in dealership; prints each vehicle
+        displayVehicles(dealership.getAllVehicles());
+    };
     public void processAddVehicleRequest(){};
     public void processRemoveVehicleRequest(){};
+
+    private void displayVehicles(List<Vehicle> vehicles){
+
+        // Prints every vehicle in the inputted list of vehicles
+        for(Vehicle vehicle : vehicles){
+            System.out.println(vehicle);
+        }
+    }
 
 }
