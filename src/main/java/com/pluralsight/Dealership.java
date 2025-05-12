@@ -46,12 +46,92 @@ public class Dealership {
 
 // <editor-fold desc="DERIVED GETTERS">
 
-    public List<Vehicle> getVehiclesByPrice(double min, double max){};
-    public List<Vehicle> getVehiclesByMakeModel(String make, String model){};
-    public List<Vehicle> getVehiclesByYear(int min, int max){};
-    public List<Vehicle> getVehiclesByColor(String color){};
-    public List<Vehicle> getVehiclesByMileage(int min, int max){};
-    public List<Vehicle> getVehiclesByType(String vehicleType){};
+    public List<Vehicle> getVehiclesByPrice(double min, double max){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose price is between the min and max
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getPrice() >= min && vehicle.getPrice() <= max){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+    };
+
+    public List<Vehicle> getVehiclesByMakeModel(String make, String model){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose make and model match those provided
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getMake().equals(make) && vehicle.getModel().equals(model)){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+    };
+
+    public List<Vehicle> getVehiclesByYear(int min, int max){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose year is between the min and max
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getYear() >= min && vehicle.getYear() <= max){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+
+    };
+
+    public List<Vehicle> getVehiclesByColor(String color){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose make and model match those provided
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getColor().equals(color)){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+
+    };
+
+    public List<Vehicle> getVehiclesByMileage(int min, int max){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose odometer reading is between the min and max
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+
+    };
+
+    public List<Vehicle> getVehiclesByType(String vehicleType){
+
+        List<Vehicle> filteredVehicles = new ArrayList<Vehicle>();
+
+        // Adds to filtered list every vehicle in inventory whose type of vehicle match the one provided
+        for (Vehicle vehicle : inventory){
+            if (vehicle.getVehicleType().equals(vehicleType)){
+                filteredVehicles.add(vehicle);
+            }
+        }
+
+        return filteredVehicles;
+    };
 
     public List<Vehicle> getAllVehicles(){
         return inventory;

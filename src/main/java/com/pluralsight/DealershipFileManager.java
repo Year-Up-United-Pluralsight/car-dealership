@@ -5,12 +5,17 @@ public class DealershipFileManager {
 
     public Dealership getDealership(){
 
-        Dealership dealership = new Dealership();
-
         try {
 
             FileReader fileReader = new FileReader("inventory.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+            // Gets dealership info in first line
+            String firstLine = bufferedReader.readLine();
+            String[] dealershipParamInfo = firstLine.split("\\|");
+
+            // Creates new dealership using dealership info
+            Dealership dealership = new Dealership(dealershipParamInfo[0], dealershipParamInfo[1], dealershipParamInfo[2]);
 
             String line;
 

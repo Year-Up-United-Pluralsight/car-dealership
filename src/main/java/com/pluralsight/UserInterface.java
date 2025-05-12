@@ -29,7 +29,7 @@ public class UserInterface {
         // Loads in the dealership
         init();
 
-        String userChoice = "";
+        int userChoice;
 
         // Displays menu, takes user input, & calls corresponding process() method; exits if user chooses exit or enters nothing
         do {
@@ -48,27 +48,87 @@ public class UserInterface {
             """);
 
             // Read's user choice
-            userChoice = scanner.nextLine();
+            userChoice = scanner.nextInt();
 
             // Switch statement that calls the correct process() method that matches the user request
             switch(userChoice) {
                 case 1:
-                    dealership.getVehiclesByPrice();
+
+                    // Gets user input
+                    System.out.print("Please enter a minimum price: ");
+                    double minPrice = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    System.out.print("\nPlease enter a maximum price: ");
+                    double maxPrice = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
+
                 case 2:
-                    dealership.getVehiclesByMakeModel();
+
+                    // Gets user input
+                    System.out.print("Please enter a make: ");
+                    String makeInput = scanner.nextLine();
+
+                    System.out.print("\nPlease enter a model: ");
+                    String modelInput = scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByMakeModel(makeInput, modelInput));
+
                 case 3:
-                    dealership.getVehiclesByYear();
+
+                    // Gets user input
+                    System.out.print("Please enter a minimum year: ");
+                    int minYear = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("\nPlease enter a maximum year: ");
+                    int maxYear = scanner.nextInt();
+                    scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
+
                 case 4:
-                    dealership.getVehiclesByColor();
+
+                    // Gets user input
+                    System.out.print("Please enter a color: ");
+                    String colorInput = scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByColor(colorInput));
+
                 case 5:
-                    dealership.getVehiclesByMileage();
+
+                    // Gets user input
+                    System.out.print("Please enter a minimum mileage: ");
+                    int minMileage = scanner.nextInt();
+                    scanner.nextLine();
+
+                    System.out.print("\nPlease enter a maximum mileage: ");
+                    int maxMileage = scanner.nextInt();
+                    scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
+
                 case 6:
-                    dealership.getVehiclesByType();
+
+                    // Gets user input
+                    System.out.print("Please enter a vehicle type: ");
+                    String typeInput = scanner.nextLine();
+
+                    // Filters based on user input
+                    displayVehicles(dealership.getVehiclesByType(typeInput));
+
                 case 7:
                     System.out.println("~ Have a good day!");
             }
 
-        } while (userChoice != "7" && !userChoice.isBlank());
+        } while (userChoice != 7 && userChoice != 0);
     }
 
     public void processGetByPriceRequest(){};
@@ -76,10 +136,7 @@ public class UserInterface {
     public void processGetByYearRequest(){};
     public void processGetByMileageRequest(){};
     public void processGetByVehicleTypeRequest(){};
-    public void processGetAllVehiclesRequest(){
-        // Gets list of all vehicles in dealership; prints each vehicle
-        displayVehicles(dealership.getAllVehicles());
-    };
+    public void processGetAllVehiclesRequest(){ displayVehicles(dealership.getAllVehicles()); };
     public void processAddVehicleRequest(){};
     public void processRemoveVehicleRequest(){};
 
