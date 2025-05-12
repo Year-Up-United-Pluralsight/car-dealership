@@ -11,7 +11,7 @@ public class Dealership {
     private ArrayList<Vehicle> inventory;
 
 // CONSTRUCTOR
-    public void Dealership(String name, String address, String phone){
+    public Dealership(String name, String address, String phone){
         this.name = name;
         this.address =  address;
         this.phone = phone;
@@ -46,12 +46,12 @@ public class Dealership {
 
 // <editor-fold desc="DERIVED GETTERS">
 
-//    public List<Vehicle> getVehiclesByPrice(double min, double max){};
-//    public List<Vehicle> getVehiclesByMakeModel(String make, String model){};
-//    public List<Vehicle> getVehiclesByYear(int min, int max){};
-//    public List<Vehicle> getVehiclesByColor(String color){};
-//    public List<Vehicle> getVehiclesByMileage(int min, int max){};
-//    public List<Vehicle> getVehiclesByType(String vehicleType){};
+    public List<Vehicle> getVehiclesByPrice(double min, double max){};
+    public List<Vehicle> getVehiclesByMakeModel(String make, String model){};
+    public List<Vehicle> getVehiclesByYear(int min, int max){};
+    public List<Vehicle> getVehiclesByColor(String color){};
+    public List<Vehicle> getVehiclesByMileage(int min, int max){};
+    public List<Vehicle> getVehiclesByType(String vehicleType){};
 
     public List<Vehicle> getAllVehicles(){
         return inventory;
