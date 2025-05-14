@@ -2,7 +2,7 @@ package com.pluralsight;
 
 public class Vehicle {
 
-// PRIVATE VARS
+// ATTRIBUTES
     private int vin;
     private int year;
     private String make;
@@ -26,7 +26,6 @@ public class Vehicle {
 
 // <editor-fold desc="GETTERS/SETTERS">
 
-// GETTERS/SETTERS
     public int getVin() {
         return vin;
     }

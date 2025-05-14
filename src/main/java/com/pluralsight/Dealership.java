@@ -4,11 +4,11 @@ import java.util.List;
 
 public class Dealership {
 
-// PRIVATE VARS
+// ATTRIBUTES
     private String name;
     private String address;
     private String phone;
-    private ArrayList<Vehicle> inventory;
+    private ArrayList<Vehicle> inventory = new ArrayList<>();
 
 // CONSTRUCTOR
     public Dealership(String name, String address, String phone){
@@ -58,7 +58,7 @@ public class Dealership {
         }
 
         return filteredVehicles;
-    };
+    }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
 
@@ -72,7 +72,7 @@ public class Dealership {
         }
 
         return filteredVehicles;
-    };
+    }
 
     public List<Vehicle> getVehiclesByYear(int min, int max){
 
@@ -87,7 +87,7 @@ public class Dealership {
 
         return filteredVehicles;
 
-    };
+    }
 
     public List<Vehicle> getVehiclesByColor(String color){
 
@@ -102,7 +102,7 @@ public class Dealership {
 
         return filteredVehicles;
 
-    };
+    }
 
     public List<Vehicle> getVehiclesByMileage(int min, int max){
 
@@ -117,7 +117,7 @@ public class Dealership {
 
         return filteredVehicles;
 
-    };
+    }
 
     public List<Vehicle> getVehiclesByType(String vehicleType){
 
@@ -131,18 +131,38 @@ public class Dealership {
         }
 
         return filteredVehicles;
-    };
+    }
 
     public List<Vehicle> getAllVehicles(){
         return inventory;
-    };
+    }
 
 // </editor-fold>
 
 // MORE METHODS
     public void addVehicle(Vehicle vehicle){
+
+        // Adds vehicle to array of vehicles
         inventory.add(vehicle);
-    };
-    public void removeVehicle(Vehicle vehicle){};
+
+        // Initiates DealershipFileManager object
+        DealershipFileManager fileManager = new DealershipFileManager();
+
+        // Updates file with current dealership (array of vehicles)
+        fileManager.saveDealership(this);
+
+    }
+
+    public void removeVehicle(Vehicle vehicle){
+
+        // Removes vehicle from array of vehicles
+        inventory.remove(vehicle);
+
+        // Initiates DealershipFileManager object
+        DealershipFileManager fileManager = new DealershipFileManager();
+
+        // Updates file with current dealership (array of vehicles)
+        fileManager.saveDealership(this);
+    }
 
 }

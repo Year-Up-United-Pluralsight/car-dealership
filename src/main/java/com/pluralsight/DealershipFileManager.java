@@ -7,7 +7,7 @@ public class DealershipFileManager {
 
         try {
 
-            FileReader fileReader = new FileReader("inventory.csv");
+            FileReader fileReader = new FileReader("src/main/resources/inventory.csv");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             // Gets dealership info in first line
@@ -41,6 +41,8 @@ public class DealershipFileManager {
                 dealership.addVehicle(vehicle);
             }
 
+            bufferedReader.close();
+
             return dealership;
         }
 
@@ -51,6 +53,40 @@ public class DealershipFileManager {
 
     }
 
-    public void saveDealership(Dealership dealership){};
+    public void saveDealership(Dealership dealership){
+
+        try {
+
+            // "true" in order to append to file instead of replace
+            FileWriter fileWriter = new FileWriter("src/main/resources/inventory.csv", false);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write(dealership.getName() + "|");
+            bufferedWriter.write(dealership.getAddress() + "|");
+            bufferedWriter.write(dealership.getPhone());
+
+            // Updates the file by writing every vehicle's attributes in dealership to the file in order separated by a pipe
+            for (Vehicle vehicle : dealership.getAllVehicles()){
+
+                bufferedWriter.write("\n"); // Skips a line
+                bufferedWriter.write(vehicle.getVin() + "|");
+                bufferedWriter.write(vehicle.getYear() + "|");
+                bufferedWriter.write(vehicle.getMake() + "|");
+                bufferedWriter.write(vehicle.getModel() + "|");
+                bufferedWriter.write(vehicle.getVehicleType() + "|");
+                bufferedWriter.write(vehicle.getColor() + "|");
+                bufferedWriter.write(vehicle.getOdometer() + "|");
+                bufferedWriter.write(String.format("%.2f", vehicle.getPrice()));
+            }
+
+            bufferedWriter.close();
+
+        }
+
+        catch (IOException e){
+            System.out.println("Error! File failed to read...");
+        }
+
+    }
 
 }
